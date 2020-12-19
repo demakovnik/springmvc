@@ -4,7 +4,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/employee")
@@ -18,7 +17,12 @@ public class MyController {
     @RequestMapping("/askDetails")
     public String askEmpDetails(Model model) {
 
-        model.addAttribute("employee",new Employee());
+        Employee employee = new Employee();
+        employee.setName("Nikitosss");
+        employee.setSurname("Demakovvv");
+        employee.setSalary(20000);
+
+        model.addAttribute("employee", employee);
 
         return "ask-emp-details-view";
     }
@@ -39,7 +43,7 @@ public class MyController {
     }*/
 
     @RequestMapping("/showDetails")
-    public String showEmpDetails(@ModelAttribute("employee") Employee employee ) {
+    public String showEmpDetails(@ModelAttribute("employee") Employee employee) {
         return "show-emp-details-view";
     }
 }
