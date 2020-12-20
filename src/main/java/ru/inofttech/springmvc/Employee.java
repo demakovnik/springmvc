@@ -1,5 +1,8 @@
 package ru.inofttech.springmvc;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Employee {
 
     private  String name;
@@ -10,8 +13,15 @@ public class Employee {
 
     private String department;
 
+    private Map<String,String> departments;
+
     public Employee(){
         this("Nikita","Demakov",3500);
+        departments = new HashMap<>();
+        departments.put("Information Technologies","IT");
+        departments.put("Human Resources","HR");
+        departments.put("Sales","Sales");
+
     }
 
     public Employee(String name, String surname, int salary) {
@@ -50,6 +60,14 @@ public class Employee {
 
     public void setDepartment(String department) {
         this.department = department;
+    }
+
+    public Map<String, String> getDepartments() {
+        return departments;
+    }
+
+    public void setDepartments(Map<String, String> departments) {
+        this.departments = departments;
     }
 
     @Override
