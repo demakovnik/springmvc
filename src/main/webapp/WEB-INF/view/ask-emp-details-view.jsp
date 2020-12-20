@@ -9,10 +9,15 @@
 <body>
 <h2>Dear Employee, Please enter your details</h2>
 <%--@elvariable id="employee" type="ru.inofttech.springmvc.Employee"--%>
-<form:form action = "showDetails"  modelAttribute="employee">
+<form:form action="showDetails" modelAttribute="employee">
     Name <form:input path="name"/><br>
     Surname <form:input path="surname"/><br>
     Salary <form:input path="salary"/><br>
+    Department <form:select path="department">
+    <form:option value="Information Technology" label="IT"/>
+    <form:option value="Human Resources" label="HR"/>
+    <form:option value="Sales" label="Sales"/>
+</form:select><br><br>
     <input type="submit" value="OK">
 </form:form>
 </body>
