@@ -1,9 +1,6 @@
 package ru.inofttech.springmvc;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -30,6 +27,9 @@ public class Employee {
     private String[] languages;
 
     private Map<String, String> langList;
+
+    @Pattern(regexp = "\\d{3}-\\d{2}-\\d{2}", message = "please use pattern XXX-XX-XX")
+    private String phoneNumber;
 
     public Employee() {
         this("Nikita", "Demakov", 3500);
@@ -123,6 +123,14 @@ public class Employee {
 
     public void setLangList(Map<String, String> langList) {
         this.langList = langList;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     @Override
