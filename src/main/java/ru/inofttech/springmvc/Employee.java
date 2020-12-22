@@ -1,42 +1,46 @@
 package ru.inofttech.springmvc;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Employee {
 
-    private  String name;
+    @Size(min = 2, max = 30, message = "Name must be min 2 symbols")
+    private String name;
 
+    @NotBlank(message = "surname is required field")
     private String surname;
 
     private int salary;
 
     private String department;
 
-    private Map<String,String> departments;
+    private Map<String, String> departments;
 
     private String carBrand;
 
-    private Map<String,String> carBrands;
+    private Map<String, String> carBrands;
 
     private String[] languages;
 
     private Map<String, String> langList;
 
-    public Employee(){
-        this("Nikita","Demakov",3500);
+    public Employee() {
+        this("Nikita", "Demakov", 3500);
         departments = new HashMap<>();
-        departments.put("Information Technologies","IT");
-        departments.put("Human Resources","HR");
-        departments.put("Sales","Sales");
+        departments.put("Information Technologies", "IT");
+        departments.put("Human Resources", "HR");
+        departments.put("Sales", "Sales");
         carBrands = new HashMap<>();
-        carBrands.put("BMW","BMW");
-        carBrands.put("Audi","Audi");
-        carBrands.put("Mercedes-Benz","MB");
+        carBrands.put("BMW", "BMW");
+        carBrands.put("Audi", "Audi");
+        carBrands.put("Mercedes-Benz", "MB");
         langList = new HashMap<>();
-        langList.put("English","EN");
-        langList.put("Deutsch","DE");
-        langList.put("French","FR");
+        langList.put("English", "EN");
+        langList.put("Deutsch", "DE");
+        langList.put("French", "FR");
     }
 
     public Employee(String name, String surname, int salary) {

@@ -2,8 +2,11 @@ package ru.inofttech.springmvc;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/employee")
@@ -16,7 +19,6 @@ public class MyController {
 
     @RequestMapping("/askDetails")
     public String askEmpDetails(Model model) {
-
 
 
         model.addAttribute("employee", new Employee());
@@ -40,17 +42,11 @@ public class MyController {
     }*/
 
     @RequestMapping("/showDetails")
-    public String showEmpDetails(@ModelAttribute("employee") Employee employee) {
-
-        String name = employee.getName();
-
-        String surname = employee.getSurname();
-
-        int salary = employee.getSalary();
-
-        employee.setName("Mr. " + name);
-        employee.setSurname(surname + "!");
-        employee.setSalary(salary*100);
+    public String showEmpDetails(@Valid @ModelAttribute("employee") Employee employee,
+                                 BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "ask-emp-details-view";
+        }
         return "show-emp-details-view";
     }
 }
