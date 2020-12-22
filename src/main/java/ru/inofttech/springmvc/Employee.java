@@ -1,5 +1,7 @@
 package ru.inofttech.springmvc;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.HashMap;
@@ -13,6 +15,8 @@ public class Employee {
     @NotBlank(message = "surname is required field")
     private String surname;
 
+    @Min(value = 500, message = "must be greater than 499")
+    @Max(value = 1001, message = "musty be less than 1001")
     private int salary;
 
     private String department;
